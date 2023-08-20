@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:12
+    container_name: "db-postgresql"
+    environment:
+      - POSTGRES_USER=project-1
+      - POSTGRES_PASSWORD=project-1
+      - TZ=GMT-3
+    volumes:
+      - "./data/postgres:/var/lib/postgres/data"
+    ports:
+      - 5433:5432
+    networks:
+      - project-1-networks
+
+networks:
+  project-1-networks:
+    driver: bridge
